@@ -1,0 +1,31 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+<div ng-submit="submit()" ng-app="EShopAPP" ng-controller="mainController" class="table-responsive">
+
+    <table class="table" ng-app="EShopAPP">
+        <tr>
+            <th>ID <input type="text" ng-model="Search.ProductID"></th>
+            <th>Name <input type="text" ng-model="Search.Name"></th>
+            <th>Description <input type="text" ng-model="Search.Description"></th>
+            <th>Price <input type="text" ng-model="Search.Price"></th>
+            <th>Count <input type="text" ng-model="Search.Count"></th>
+            <th></th>
+        </tr>
+        <tr ng-repeat="product in products | filter:{ProductID:Search.ProductID, Name:Search.Name, Description:Search.Description, Price:Search.Price, Count:Search.Count}">
+            <td>{{product.ProductID}}</td>
+            <td>{{product.Name}}</td>
+            <td>{{product.Description}}</td>
+            <td>{{product.Price}}</td>
+            <td>{{product.Count}}</td>
+            <td><button ng-click="AddToCart($index)"> Add To Cart</button></td>
+        </tr>
+    </table>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular-route.js"></script>
+
+<script src="~/Scripts/Products.js"></script>
